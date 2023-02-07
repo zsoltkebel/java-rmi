@@ -78,18 +78,18 @@ auctionclean:
 ###########################################################
 
 sps:
-	javac cs3534/examples/sps/SPSServerImpl.java; \
-	javac cs3534/examples/sps/SPSServerMainline.java; \
-	javac cs3534/examples/sps/SPSClient.java
+	javac examples/sps/SPSServerImpl.java; \
+	javac examples/sps/SPSServerMainline.java; \
+	javac examples/sps/SPSClient.java
 
 spsclean:
-	cd cs3534/examples/sps; \
+	cd examples/sps; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
 
-spstar:	spsclean
-	rm $(RM_FLAGS) sps.tgz; \
-	tar cvf - cs3534/examples/sps sps.policy | gzip > sps.tgz
+###########################################################
+# TPG
+###########################################################
 
 tpg:
 	javac cs3534/solutions/tpg/TPGServerImpl.java; \

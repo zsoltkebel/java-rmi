@@ -23,6 +23,10 @@ Instructions to build:
 `java examples.rmishout.ShoutClient <yourmachine-name> XXXXXX` \
 You can use the command `hostname` to identify your host name.
 
+## [SPS](/examples/sps/) (Practical 1)
+
+
+
 ## [Socket SPS (Scissors-Paper-Stone)](/examples/socketsps/) (Practical 2)
 
 1. Build with \
