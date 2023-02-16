@@ -42,6 +42,10 @@ You can use the command `hostname` to identify your host name.
 4. New Termial \
 `java examples.auction.BidderMainline oa-edu-188-66.wireless.abdn.ac.uk XXXXX 50016 30`
 
+## [IRC](/examples/irc/)
+
+Internet-Relay Chat example using TELENT protocol.
+
 ## [Factory](/examples/factory/)
 
 An example project generating connections to a server.

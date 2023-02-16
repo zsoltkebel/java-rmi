@@ -106,18 +106,14 @@ tpgtar:	tpgclean
 	tar cvf - cs3534/solutions/tpg tpg.policy | gzip > tpg.tgz
 
 ###########################################################
-## The IRC example and solution
-##
-## Tim Norman
-## 2004/11/24
-## Revised for java 1.5 2008/01/28
+## The IRC example
 ###########################################################
 
 irc:
-	javac cs3534/examples/irc/*.java
+	javac examples/irc/*.java
 
 ircclean:
-	cd cs3534/examples/irc; \
+	cd examples/irc; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
 
