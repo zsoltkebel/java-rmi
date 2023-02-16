@@ -1,4 +1,17 @@
-# Challenge
+# Auction
+
+## Run example
+
+1. `make auction`
+
+2. `rmiregistry XXXXX`
+
+3. New Terminal \
+`java examples.auction.AuctioneerMainline XXXXX 50014 laptop`
+
+4. New Termial \
+`java examples.auction.BidderMainline oa-edu-188-66.wireless.abdn.ac.uk XXXXX 50016 30`
+## Challenge
 
 1. Build and run the Auction example and understand how it works.
 
