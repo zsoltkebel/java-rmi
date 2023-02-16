@@ -41,3 +41,7 @@ You can use the command `hostname` to identify your host name.
 `java examples.auction.AuctioneerMainline XXXXX 50014 laptop`
 4. New Termial \
 `java examples.auction.BidderMainline oa-edu-188-66.wireless.abdn.ac.uk XXXXX 50016 30`
+
+## [Factory](/examples/factory/)
+
+An example project generating connections to a server.

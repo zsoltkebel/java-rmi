@@ -220,13 +220,13 @@ distcollegesolntar:	distcollegesolnclean
 ###########################################################
 
 factory:
-	javac cs3534/examples/factory/ConnectionImpl.java; \
-	javac cs3534/examples/factory/ConnectionFactoryImpl.java; \
-	javac cs3534/examples/factory/FactoryMainline.java; \
-	javac cs3534/examples/factory/ClientSimulator.java
+	javac examples/factory/ConnectionImpl.java; \
+	javac examples/factory/ConnectionFactoryImpl.java; \
+	javac examples/factory/FactoryMainline.java; \
+	javac examples/factory/ClientSimulator.java
 
 factoryclean:
-	cd cs3534/examples/factory; \
+	cd examples/factory; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
 
