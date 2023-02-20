@@ -9,12 +9,10 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class QueryTool
-{
+public class QueryTool {
     private Connection conn = null ;
     
-    public QueryTool ( String dbname ) throws ClassNotFoundException, SQLException
-    {
+    public QueryTool ( String dbname ) throws ClassNotFoundException, SQLException {
         System.out.println ( "QueryTool> start") ;
         
         // create database, if it doesn't exist yet
@@ -30,8 +28,7 @@ public class QueryTool
         
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println ( "QueryTool> start") ;
         
         try {
@@ -45,9 +42,7 @@ public class QueryTool
         System.out.println ( "College> end") ;
     }
     
-    
-    private void commandLine() throws SQLException
-    {
+    private void commandLine() throws SQLException {
         BufferedReader in = new BufferedReader( new InputStreamReader( System.in ));
         
         char sel;
@@ -102,12 +97,9 @@ public class QueryTool
         catch (StringIndexOutOfBoundsException e) {
             System.err.println( "You need to enter a valid option; exiting..." );
         }
-
     }
     
-    public void displayStudent( int sid )
-    throws SQLException
-    {
+    public void displayStudent(int sid) throws SQLException {
         Statement stmt = conn.createStatement();
         ResultSet rs;
         String sql;
@@ -142,71 +134,65 @@ public class QueryTool
         displayResultSet( rs );
 
         stmt.close();
-
     }
     
-    public void displayCourse( int cid )
-    throws SQLException
-    {
-    Statement stmt = conn.createStatement();
-    ResultSet rs;
-    String sql;
+    public void displayCourse(int cid) throws SQLException {
+        Statement stmt = conn.createStatement();
+        ResultSet rs;
+        String sql;
 
-    sql = "select Teacher, CourseName, Day, Capacity from " + "Courses" +
-          " where CID = " + cid;
-    rs = stmt.executeQuery( sql );
-    
-    // Move cursor to the first entry (there should only be one
-    // entry).  If there is no first entry in the ResultSet, then
-    // the course does not exist.
-    if (rs.next()) {
-        String teacher = rs.getString( "Teacher" );
-        String course = rs.getString( "CourseName" );
-        String day = rs.getString( "Day" );
-        int capacity = rs.getInt( "Capacity" );
-        System.out.println( "\n" + cid + ": " + course + "\nby\n" + teacher +
-                            "\nSessions each " + day + "\nClass capacity = " +
-                            capacity + "\n" );
-    }
-    else {
-        System.out.println( "Course does not exist." );
-        return;
-    }
+        sql = "select Teacher, CourseName, Day, Capacity from " + "Courses" +
+            " where CID = " + cid;
+        rs = stmt.executeQuery( sql );
+        
+        // Move cursor to the first entry (there should only be one
+        // entry).  If there is no first entry in the ResultSet, then
+        // the course does not exist.
+        if (rs.next()) {
+            String teacher = rs.getString( "Teacher" );
+            String course = rs.getString( "CourseName" );
+            String day = rs.getString( "Day" );
+            int capacity = rs.getInt( "Capacity" );
+            System.out.println( "\n" + cid + ": " + course + "\nby\n" + teacher +
+                                "\nSessions each " + day + "\nClass capacity = " +
+                                capacity + "\n" );
+        }
+        else {
+            System.out.println( "Course does not exist." );
+            return;
+        }
 
-    // Now obtain the list of students registered for this course
-    // by querying the enrollments and student tables, and display
-    // the results using the generic displayResultSet method.
-    sql = "select " +
-          "Students" + ".SID, " + "Students" + ".FirstName, " +
-          "Students" + ".LastName " +
-          "from " +
-          "Students" + ", " + "Enrollments" +
-          " where " +
-          "Enrollments" + ".CID = " + cid + " and " +
-          "Enrollments" + ".SID = " + "Students" + ".SID";
-    rs = stmt.executeQuery( sql );
-    System.out.println( "\nClass list:" );
-    displayResultSet( rs );
+        // Now obtain the list of students registered for this course
+        // by querying the enrollments and student tables, and display
+        // the results using the generic displayResultSet method.
+        sql = "select " +
+            "Students" + ".SID, " + "Students" + ".FirstName, " +
+            "Students" + ".LastName " +
+            "from " +
+            "Students" + ", " + "Enrollments" +
+            " where " +
+            "Enrollments" + ".CID = " + cid + " and " +
+            "Enrollments" + ".SID = " + "Students" + ".SID";
+        rs = stmt.executeQuery( sql );
+        System.out.println( "\nClass list:" );
+        displayResultSet( rs );
 
-    stmt.close();
+        stmt.close();
     }
     
-    
-    public void displayResultSet( ResultSet rs )
-    throws SQLException
-    {
-    ResultSetMetaData rsmd = rs.getMetaData() ;
-    int cols = rsmd.getColumnCount() ;
-    System.out.println( "------------------------------------------------------------" ) ;
-    for (int i = 1; i <= cols; i++)
-        printField( rsmd.getColumnName( i ) );
-    System.out.println( "\n------------------------------------------------------------" ) ;
-    while( rs.next() ) {
+    public void displayResultSet(ResultSet rs) throws SQLException {
+        ResultSetMetaData rsmd = rs.getMetaData() ;
+        int cols = rsmd.getColumnCount() ;
+        System.out.println( "------------------------------------------------------------" ) ;
         for (int i = 1; i <= cols; i++)
-        printField( rs.getString( i ) );
-        System.out.println();
-    }
-    System.out.println( "------------------------------------------------------------\n" ) ;
+            printField( rsmd.getColumnName( i ) );
+        System.out.println( "\n------------------------------------------------------------" ) ;
+        while( rs.next() ) {
+            for (int i = 1; i <= cols; i++)
+            printField( rs.getString( i ) );
+            System.out.println();
+        }
+        System.out.println( "------------------------------------------------------------\n" ) ;
     }
 
     public static void printField( String name ) {
@@ -215,4 +201,3 @@ public class QueryTool
         System.out.print( name + "\t" );
     }
 }
-

@@ -5,51 +5,40 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CollegeDatabaseInitialiser
-{
+public class CollegeDatabaseInitialiser {
     
-    private void delDB ( String url, String dbname )
-    {
+    private void delDB ( String url, String dbname ) {
         // DROP DATABASE dbname;
     }
-    private void deleteDB ( String url ) throws SQLException
-    {
-        Connection conn = DriverManager.getConnection( url, "root", "" ) ;
 
+    private void deleteDB ( String url ) throws SQLException {
+        Connection conn = DriverManager.getConnection( url, "root", "" ) ;
     }
 
-    private Connection connectDB ( String url ) throws ClassNotFoundException, SQLException
-    {
+    private Connection connectDB ( String url ) throws ClassNotFoundException, SQLException {
         // load JDBC driver com.mysql.jdbc.Driver
         Class.forName ( "com.mysql.jdbc.Driver" ) ;
         
         // connect to XAMPP database
         Connection conn = DriverManager.getConnection( url, "root", "" ) ;
         
-        return conn ;
-        
+        return conn ; 
     }
     
-    private void addUser ( String username, String password )
-    {
+    private void addUser ( String username, String password ) {
         // GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';
         String sqlStmt = "GRANT ALL PRIVILEGES ON *.* TO '" + username + 
-                         "'@localhost IDENTIFIED BY '" + password + "'";
-        
-        
-        
+                         "'@localhost IDENTIFIED BY '" + password + "'";  
     }
     
-    private void delUser ( String username )
-    {
+    private void delUser ( String username ) {
         // DELETE FROM mysql.user 
         // WHERE  user = 'root' 
         //        AND host = 'localhost';
     }
     
     
-    public CollegeDatabaseInitialiser (String dbname ) throws ClassNotFoundException, SQLException
-    {
+    public CollegeDatabaseInitialiser (String dbname ) throws ClassNotFoundException, SQLException {
         System.out.println ( "CollegeDatabaseInitialiser> start") ;
         
         // create database, if it doesn't exist yet
@@ -66,9 +55,7 @@ public class CollegeDatabaseInitialiser
         System.out.println ( "CollegeDatabaseInitialiser> end") ;
     }
     
-
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         System.out.println ( "College> start") ;
         
         System.out.println ( "College> run the initialiser") ;
@@ -82,9 +69,7 @@ public class CollegeDatabaseInitialiser
         System.out.println ( "College> end") ;
     }
     
-    
-    public void initialiseStudents( Connection conn ) throws SQLException
-    {
+    public void initialiseStudents( Connection conn ) throws SQLException {
         String tableName = "Students";
         Statement stmt   = conn.createStatement();
         
@@ -136,9 +121,7 @@ public class CollegeDatabaseInitialiser
         stmt.close() ;
     }
 
-    public void initialiseCourses( Connection conn ) throws SQLException
-    {
-    
+    public void initialiseCourses( Connection conn ) throws SQLException {
         String    tableName = "Courses";
         Statement stmt      =  conn.createStatement();
     
@@ -208,8 +191,7 @@ public class CollegeDatabaseInitialiser
         stmt.close() ;
     }
     
-    public void initialiseEnrollments( Connection conn ) throws SQLException
-    {
+    public void initialiseEnrollments( Connection conn ) throws SQLException {
         String    tableName = "Enrollments";
         Statement stmt      = conn.createStatement();
     

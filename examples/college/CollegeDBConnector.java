@@ -5,13 +5,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CollegeDBConnector
-{
+public class CollegeDBConnector {
     static final String JDBCDriver  = "com.mysql.jdbc.Driver"   ;
     static final String dbServerURL = "jdbc:mysql://localhost/" ;
 
-    static public Connection createOrConnectDB ( String dbname ) throws ClassNotFoundException, SQLException
-    {
+    static public Connection createOrConnectDB ( String dbname ) throws ClassNotFoundException, SQLException {
         System.out.println ( "createDB> create database " + dbname ) ;
         
         Connection conn = null ;
@@ -47,10 +45,7 @@ public class CollegeDBConnector
                 // again throw SQLException to make this error known to the calling method
                 throw new SQLException() ;
             }
-
        }
         return conn;   
     }
-
-
 }
