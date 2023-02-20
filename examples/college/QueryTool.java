@@ -78,7 +78,9 @@ public class QueryTool {
                 sid = Integer.parseInt( in.readLine() );
                 System.out.print( "Enter the Course ID: " );
                 cid = Integer.parseInt( in.readLine() );
-                //enrollStudent( sid, cid );
+
+                enrollStudentOnCourse(sid, cid);
+
                 displayStudent( sid );
                 System.out.print( "Press return to continue..." );
                 in.readLine();
@@ -176,6 +178,20 @@ public class QueryTool {
         rs = stmt.executeQuery( sql );
         System.out.println( "\nClass list:" );
         displayResultSet( rs );
+
+        stmt.close();
+    }
+
+    // sid = student id, cid = course id
+    public void enrollStudentOnCourse(int sid, int cid) throws SQLException {
+        Statement stmt = conn.createStatement();
+        String tableName = "Enrolments";
+        String sql = "insert into " + tableName + " (CID, SID) " + "values(" + cid + "," + sid + ")";
+
+        //TODO check if course has place and the student is not already enrolled
+        stmt.execute(sql);
+
+        System.out.println("\nStudent enrolled");
 
         stmt.close();
     }
