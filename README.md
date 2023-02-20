@@ -29,3 +29,7 @@ Internet-Relay Chat example using TELENT protocol.
 ## [Factory](/examples/factory/)
 
 An example project generating connections to a server.
+
+## [College](/examples/college)
+
+An exmaple project showcasing CRUD operations in a MySQL database.

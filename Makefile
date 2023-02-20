@@ -136,37 +136,22 @@ ircsolntar:	ircsolnclean
 
 ###########################################################
 ## The College example and solution
-##
-## Tim Norman
-## 2004/11/24
-## Revised for java 1.5 2008/01/28
 ###########################################################
 
 college:
-	javac cs3534/examples/college/CollegeDatabaseInitialiser.java; \
-	javac cs3534/examples/college/QueryTool.java
+	javac examples/college/*.java
+
+collegerun:
+# first opulate the database
+	java -cp ./:examples/college/mysql-connector-java-5.1.34-bin.jar examples.college.CollegeDatabaseInitialiser
+# then run the QueryTool
+	java -cp ./:examples/college/mysql-connector-java-5.1.34-bin.jar examples.college.QueryTool
 
 collegeclean:
-	cd cs3534/examples/college; \
+	cd examples/college; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
 
-collegetar:	collegeclean
-	rm $(RM_FLAGS) college.tgz; \
-	tar cvf - cs3534/examples/college | gzip > college.tgz
-
-collegesoln:
-	javac cs3534/solutions/college/CollegeDatabaseInitialiser.java; \
-	javac cs3534/solutions/college/QueryTool.java
-
-collegesolnclean:
-	cd cs3534/solutions/college; \
-	rm $(RM_FLAGS) *.class *~; \
-	cd $(project_home)
-
-collegesolntar:	collegesolnclean
-	rm $(RM_FLAGS) collegesoln.tgz; \
-	tar cvf - cs3534/solutions/college | gzip > collegesoln.tgz
 
 ###########################################################
 ## The Distributed College example and solution
