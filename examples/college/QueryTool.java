@@ -185,7 +185,7 @@ public class QueryTool {
     // sid = student id, cid = course id
     public void enrollStudentOnCourse(int sid, int cid) throws SQLException {
         Statement stmt = conn.createStatement();
-        String tableName = "Enrolments";
+        String tableName = "Enrollments";
         String sql = "insert into " + tableName + " (CID, SID) " + "values(" + cid + "," + sid + ")";
 
         //TODO check if course has place and the student is not already enrolled
