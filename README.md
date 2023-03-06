@@ -33,3 +33,7 @@ An example project generating connections to a server.
 ## [College](/examples/college)
 
 An exmaple project showcasing CRUD operations in a MySQL database.
+
+## [Distributed College](/examples/distcollege/)
+
+An example of database management with ditributed remote objects.
