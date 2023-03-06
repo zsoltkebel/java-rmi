@@ -143,54 +143,38 @@ college:
 
 collegerun:
 # first opulate the database
-	java -cp ./:examples/college/mysql-connector-java-5.1.34-bin.jar examples.college.CollegeDatabaseInitialiser
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.college.CollegeDatabaseInitialiser
 # then run the QueryTool
-	java -cp ./:examples/college/mysql-connector-java-5.1.34-bin.jar examples.college.QueryTool
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.college.QueryTool
 
 collegeclean:
 	cd examples/college; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
 
-
 ###########################################################
-## The Distributed College example and solution
-##
-## Tim Norman
-## 2004/11/24
-## Revised for java 1.5 2008/01/28
-## Simplified 2009/02/10
+## The Distributed College example
 ###########################################################
 
 distcollege:
-	javac cs3534/examples/distcollege/CollegeDatabaseInitialiser.java; \
-	javac cs3534/examples/distcollege/CollegeImpl.java; \
-	javac cs3534/examples/distcollege/CollegeMainline.java; \
-	javac cs3534/examples/distcollege/QueryTool.java
+	javac examples/distcollege/CollegeDatabaseInitialiser.java; \
+	javac examples/distcollege/CollegeImpl.java; \
+	javac examples/distcollege/CollegeMainline.java; \
+	javac examples/distcollege/QueryTool.java
+
+distcollegerun:
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.distcollege.CollegeDatabaseInitialiser com.mysql.jdbc.Driver jdbc:mysql://localhost/ distcollege root ""
+
+distcollegeserver:
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.distcollege.CollegeMainline 50012 50014 com.mysql.jdbc.Driver jdbc:mysql://localhost/distcollege root ""
+
+distcollegeclient:
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.distcollege.QueryTool localhost 50012 com.mysql.jdbc.Driver jdbc:mysql://localhost/distcollege root ""
 
 distcollegeclean:
-	cd cs3534/examples/distcollege; \
+	cd examples/distcollege; \
 	rm $(RM_FLAGS) *.class *~; \
 	cd $(project_home)
-
-distcollegetar:	distcollegeclean
-	rm $(RM_FLAGS) distcollege.tgz; \
-	tar cvf - cs3534/examples/distcollege | gzip > distcollege.tgz
-
-distcollegesoln:
-	javac cs3534/solutions/distcollege/CollegeDatabaseInitialiser.java; \
-	javac cs3534/solutions/distcollege/CollegeImpl.java; \
-	javac cs3534/solutions/distcollege/CollegeMainline.java; \
-	javac cs3534/solutions/distcollege/QueryTool.java
-
-distcollegesolnclean:
-	cd cs3534/solutions/distcollege; \
-	rm $(RM_FLAGS) *.class *~; \
-	cd $(project_home)
-
-distcollegesolntar:	distcollegesolnclean
-	rm $(RM_FLAGS) distcollegesoln.tgz; \
-	tar cvf - cs3534/solutions/distcollege | gzip > distcollegesoln.tgz
 
 ###########################################################
 ## The Factory example and solution
