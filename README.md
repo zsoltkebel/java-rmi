@@ -3,7 +3,9 @@
 Official docs for Java RMI:
 
 https://docs.oracle.com/javase/tutorial/rmi/
+
 https://docs.oracle.com/javase/7/docs/technotes/guides/rmi/hello/hello-world.html
+
 
 ## Exmaples
 - [RMI Shout](/examples/rmishout/) \
