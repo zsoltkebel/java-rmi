@@ -177,6 +177,17 @@ distcollegeclean:
 	cd $(project_home)
 
 ###########################################################
+## Security
+###########################################################
+
+secure:
+	javac examples/secure/*.java
+
+securerun:
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.secure.DBInit com.mysql.jdbc.Driver jdbc:mysql://localhost/secure root ""; \
+	java -cp ./:examples/mysql-connector-java-5.1.34-bin.jar examples.secure.QueryTool com.mysql.jdbc.Driver jdbc:mysql://localhost/secure root ""; \
+
+###########################################################
 ## The Factory example and solution
 ##
 ## Tim Norman

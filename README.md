@@ -32,5 +32,7 @@ An exmaple project showcasing CRUD operations in a MySQL database.
 - [Distributed College](/examples/distcollege/) \
 An example of database management with ditributed remote objects.
 
+- [Secure](/examples/secure/) \
+An example of potential security flaws (especially sql injection)
 
 These examples originate from Tim Norton at the University of Aberdeen. The code is refactored and updated to modern Java version by me.
