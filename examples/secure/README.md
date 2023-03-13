@@ -6,6 +6,12 @@
 
 3. `make securerun`
 
+On Windows:
+
+`java -cp ".;<Full path to connector>" examples.secure.DBInit "com.mysql.jdbc.Driver" "jdbc:mysql://localhost/secure" "root" "."`
+
+And you need to hardcode the empty password when initalising the connection because for some reason you can't pass empt string as argument.
+
 ## Fixing the code
 
 Look for three security flaws in the code and fix them.
